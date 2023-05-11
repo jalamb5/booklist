@@ -1,43 +1,53 @@
-let myLibrary = ["Book 1", "Book 2", "Book 3", "Book 4"];
-
-function Book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-  this.info = function () {
-    return title + author + ", " + pages + " pages"
+class Book {
+  constructor(title, author, pages, read = false) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
+  info() {
+    return this.title + ", " + this.author + ", " + this.pages + " pages";
   }
 }
 
-function addBookToLibrary() {
-
-}
+let myLibrary = [];
 
 function showBooks() {
   let bookView = document.getElementById("showBooks");
 
-  for (let i of myLibrary) {
-    let newBook = document.createTextNode(i);
+  for (let book of myLibrary) {
+    let newBook = document.createTextNode(book.info());
     bookView.appendChild(newBook);
   }
 }
 
-showBooks()
+// Add an event listener to the submit button
+const submitButton = document.querySelector('.submitBtn');
+submitButton.addEventListener('click', addBookToLibrary);
 
-// document.body.onload = addElement;
+// Function to handle the form submission
+function addBookToLibrary(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
 
-// function addElement() {
-//   // create a new div element
-//   const newDiv = document.createElement("div");
+  // Get the form input values
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  let read = document.getElementById('read').checked;
 
-//   // and give it some content
-//   const newContent = document.createTextNode("Hi there and greetings!");
+  // Create a new Book object with the input values
+  let newBook = new Book(title, author, pages, read);
 
-//   // add the text node to the newly created div
-//   newDiv.appendChild(newContent);
+  // Add the new book to the library
+  myLibrary.push(newBook);
 
-//   // add the newly created element and its content into the DOM
-//   const currentDiv = document.getElementById("div1");
-//   document.body.insertBefore(newDiv, currentDiv);
-// }
+  // Call any other functions or perform additional actions as needed
+  console.log(myLibrary);
+  showBooks();
+
+  // Clear the form inputs
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
+  document.getElementById('pages').value = '';
+  document.getElementById('read').checked = false;
+}
