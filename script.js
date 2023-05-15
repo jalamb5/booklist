@@ -16,8 +16,11 @@ function showBooks() {
   let bookView = document.getElementById("showBooks");
 
   for (let book of myLibrary) {
+    let newDiv = document.createElement("div");
     let newBook = document.createTextNode(book.info());
-    bookView.appendChild(newBook);
+    newDiv.appendChild(newBook);
+    newDiv.className = "p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4";
+    bookView.appendChild(newDiv);
   }
 }
 
