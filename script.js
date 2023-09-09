@@ -15,6 +15,14 @@ let myLibrary = [];
 function showBooks() {
   let bookView = document.getElementById("showBooks");
 
+  // Remove any existing data.
+  if (bookView.children.length > 0) {
+    while (bookView.firstChild) {
+      bookView.removeChild(bookView.firstChild);
+    }
+  }
+
+  // Add books to div.
   for (let book of myLibrary) {
     let newDiv = document.createElement("div");
     let newBook = document.createTextNode(book.info());
