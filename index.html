@@ -8,32 +8,44 @@
   <script src="script.js" defer></script>
   <title>Book List</title>
 </head>
-<body>
-  <div class="addBook p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-    <form id="bookForm" action="#" method="POST">
+<body class="flex flex-col items-center justify-center min-h-screen">
+  <h1 class="mx-auto p-6 max-w-md text-2xl font-semibold mb-4">Book List</h1>
 
-      <label for="author">Author:</label><br/>
-      <input type="text" id="author" class="author" placeholder="Terry Pratchett" required/> <br />
+  <div class="addBook mx-auto p-6 max-w-md bg-white rounded-xl shadow-lg">
+    <form id="bookForm" class="space-y-4">
 
-      <label for="title">Title:</label><br/>
-      <input type="text" id="title" class="title" placeholder="Guards! Guards!" required/> <br />
+      <div class="flex items-center space-x-2">
+        <label for="author" class="block w-1/4">Author:</label>
+        <input type="text" id="author" class="author-input flex-1 border rounded-md px-2 py-1" placeholder="Terry Pratchett" required>
+      </div>
 
-      <label for="pages">Number of Pages:</label><br/>
-      <input type="number" id="pages" class="pages" min="1" required/> <br />
+      <div class="flex items-center space-x-2">
+        <label for="title" class="block w-1/4">Title:</label>
+        <input type="text" id="title" class="title-input flex-1 border rounded-md px-2 py-1" placeholder="Guards! Guards!" required>
+      </div>
 
-      <span class="readQuestion">Mark as read?</span>
-      <label class="switch" for="read">
-          <input type="checkbox" id="read" class="read"/>
+      <div class="flex items-center space-x-2">
+        <label for="pages" class="block w-1/4">Number of Pages:</label>
+        <input type="number" id="pages" class="pages-input flex-1 border rounded-md px-2 py-1" min="1" required>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <label class="block w-1/4">Mark as read?</label>
+        <label class="switch">
+          <input type="checkbox" id="read" class="read-input">
           <span class="slider round"></span>
-      </label>
-      <br />
+        </label>
+      </div>
 
-      <button type="submit" class="submitBtn bg-indigo-500 rounded-full px-6"> Submit </button>
+      <button type="submit" class="submitBtn bg-indigo-500 text-white rounded-full px-6 py-2 mx-auto">Submit</button>
     </form>
   </div>
 
-  <div id="showBooks">
 
-  </div>
+  <div id="showBooks" class="mt-4"></div>
+
 </body>
 </html>
+
+
+
